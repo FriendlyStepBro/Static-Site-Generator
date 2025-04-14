@@ -1,6 +1,8 @@
 import unittest
 
 from htmlnode import HTMLNode
+from leafnode import LeafNode
+from textnode import TextNode, TextType
 
 class TestHTMLNode(unittest.TestCase):
     def test_to_html_exception(self):
@@ -24,6 +26,7 @@ class TestHTMLNode(unittest.TestCase):
         text += "HTMLNode(b, test_bold_text_child, None, {'link': 'ftp://192.168.50.12'})"
         text += "], {'href': 'https://google.com', 'target': '_blank'})"
         self.assertEqual(str(node), text)
+    
     
 if __name__ == "__main__":
     unittest.main()
