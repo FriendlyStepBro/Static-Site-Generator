@@ -125,3 +125,28 @@ def markdown_to_blocks(markdown):
     pattern = r'(?:^|\n\n)(.*?)(?=\n\n|$)'
     blocks = re.findall(pattern, markdown, flags=re.DOTALL)
     return [block.strip() for block in blocks if block.strip()]
+
+
+def markdown_to_html_node(markdown):
+    from blocktype import BlockType, get_block_type
+    blocks = markdown_to_blocks(markdown)
+    root_node = HTMLNode(tag="div")
+    for block in blocks:
+        match (get_block_type(block)):
+            case BlockType.HEADING:
+                count = 0
+                while block[count] == '#':
+                    count += 1
+                result = HTMLNode(f"h{count}",)
+                root_node.children.append()
+                break
+            case BlockType.PARAGRAPH:
+                break
+            case BlockType.QUOTE:
+                break
+            case BlockType.ORDERED_LIST:
+                break
+            case BlockType.UNORDERED_LIST:
+                break
+            case BlockType.CODE:
+                break

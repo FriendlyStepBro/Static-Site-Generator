@@ -8,7 +8,13 @@ class HTMLNode():
         self.props = props
 
     def to_html(self):
-        raise NotImplementedError()
+        result = f"<{self.tag}"
+        props = self.props_to_html()
+        result += props
+        result += ">"
+        for node in self.children:
+            result += node.to_html
+        result += f"</{self.tag}>"
 
     def props_to_html(self):
         result = ""

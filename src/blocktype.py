@@ -61,4 +61,3 @@ def is_ordered_list(text):
             return False
         expected += 1
     return True
-
