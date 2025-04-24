@@ -10,6 +10,7 @@ class BlockType(Enum):
     ORDERED_LIST = 'ordered_list'
 
 def get_block_type(text):
+    text = text.strip()  # Strip the block text before matching
     match text[0]:
         case '#':
             if is_heading(text): return BlockType.HEADING
